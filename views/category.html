@@ -1,0 +1,53 @@
+{{template "header"}}
+	<title>分類-my博客</title>
+	</head>
+<body>
+<div class="navbar navbar-default">
+	<div class="container">
+	{{template "navbar" .}}
+	</div>
+</div>
+<div class="container">
+	<h1>分類列表</h1>
+	<form method="GET" action="/category">
+		<div class="form-group">
+			<input id="name" type="text" class="form-control" name="name" placeholder="Enter category name">
+			<input type="hidden" name="op" value="add">
+		</div>
+		<button type="submit" class="btn btn-default" onclick="return checkInput();">添加分類</button>
+
+	</form>
+  	<script type="text/javascript">
+      	function checkInput() {
+      		var uname = document.getElementById("name");
+      		if (uname.value.length == 0) {
+      			alert("請輸入分類名稱");
+      			return false;
+      		}
+      	}
+  	</script>{{template "js"}}
+  	<table class="table table-striped">
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>名稱</th>
+  				<th>文章數</th>
+  				<th>操作</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+        {{range .Categories}}
+      <tr>
+			<td>{{.Id}}</td>
+			<td>{{.Title}}</td>
+      <td>數量</td>
+			<td>
+				<a href="/category?op=del&id={{.Id}}">刪除</a>
+			</td>
+      </tr>
+        {{end}}
+  		</tbody>
+  	</table>
+</div>
+</body>
+</html>
