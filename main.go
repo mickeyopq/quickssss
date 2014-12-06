@@ -18,6 +18,7 @@ func main() {
 	orm.RunSyncdb("default", false, true)
 	// 注册 beego 路由
 	// beego.Router("/", &controllers.HomeController{})
-
+	// orm.DebugLog = orm.NewLog(w)
+	beego.Error("\n===DEBUG==============================")
 	beego.Run()
 }

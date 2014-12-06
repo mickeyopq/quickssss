@@ -10,7 +10,7 @@ type LoginController struct {
 }
 
 func (self *LoginController) Get() {
-	// 判斷是否為登錄狀態
+	// 判斷是否為登錄狀態,;如果user按了登出....
 	isExit := self.Input().Get("exit") == "true"
 	if isExit {
 		self.Ctx.SetCookie("uname", "", -1, "/")
@@ -33,9 +33,14 @@ func (self *LoginController) Post() {
 		}
 		self.Ctx.SetCookie("uname", uname, maxAge, "/")
 		self.Ctx.SetCookie("pwd", pwd, maxAge, "/")
+		self.Redirect("/", 301) //成功登錄就去那兒吧
+		return
+
 	}
-	self.Redirect("/", 301)
-	return
+	// self.Redirect("/", 301) //成功登錄就去那兒吧
+	// return
+	self.TplNames = "login.html"
+
 }
 
 func 檢查帳號(ctx *context.Context) bool {
