@@ -7,17 +7,34 @@
 	{{template "navbar" .}}
 	</div>
 </div>
-
-<div class="container">
-	<div class="page-header">
-		<h1>偶的第一次</h1>
-		<h4 class="text-muted">文章發表於2016年x月x日xx分xx秒,共1000次看過，239次評論</h4>
-		<p>
-			大家好這是我的第一篇文章，welcome
-		</p>
-	</div>
+<div class="container" role="main">
+      <div class="jumbotron hellwall">
+        <h1>Hi 你好</h1>
+        <p>歡迎來到我的博客</p>
+        <p>I'm Pike <br> mickeyopq@gmail.com
+        </p>
+        <p><a href="mailto:mickeyopq@gmail.com" class="btn btn-default btn-lg" role="button">Contact Me &raquo;</a></p>
+      </div>
 </div>
-
+<div class="container">
+	<div class="col-md-9">
+	{{range .Topics}}
+		<h1><a href="/topic/view/{{.Id}}">{{.Title}} </a></h1>
+		<h4 class="text-muted">文章發表於{{.Created}} ,共{{.Views}} 次看過，{{.ReplyCount}} 次評論</h4>
+		<p>
+			{{.Content}}
+		</p>
+	{{end}}
+	</div>
+<div class="col-md-3">
+	<h3>文章分類</h3>
+	<ul>
+		{{range .Categories}}
+			<li><a href="/?cate={{.Title}}">{{.Title}} </a></li>
+		{{end}}
+	</ul>
+</div>
+</div>
 	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
 	 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 

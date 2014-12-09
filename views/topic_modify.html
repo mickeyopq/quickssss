@@ -1,0 +1,39 @@
+{{template "header"}}
+	<title>修改文章-my博客</title>
+	</head>
+
+<body>
+  <div class="navbar navbar-default">
+  	<div class="container">
+    	{{template "navbar" .}}
+  	</div>
+  </div>
+
+
+<div class="container">
+  <h1>修改文章</h1>
+  <form method="post" action="/topic">
+        <input type="hidden" name="tid" value="{{.Tid}}">
+    <div class="form-group">
+      <label>title:</label>
+      <input type="text" class="form-control" name="title" value="{{.Topic.Title}}">
+  	</div>
+  	<div class="form-group">
+  		<label>文章分類:</label>
+      <select name="category" id="">
+        {{range .Categories}}
+          <option value="{{.Title}}">{{.Title}}</option>
+        {{end}}
+      </select>
+
+  	</div>
+  	<div class="form-group">
+  		<label>文章內容:</label>
+  		<textarea name="content" class="form-control" cols="30" rows="10">{{.Topic.Title}}</textarea>
+  	</div>
+  	<button type="submit" class="btn btn-info">提交</button>
+  </form>
+</div>
+  {{template "js"}}
+</body>
+</html>

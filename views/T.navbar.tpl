@@ -1,5 +1,5 @@
 {{define "navbar"}}
-		<a href="/" class="navbar-brand">我的我的首頁</a>
+		<a href="/" class="navbar-brand">My blog</a>
 	<div>
 		<ul class="nav navbar-nav">
 			<li {{if .IsHome}}class="active"{{end}}><a href="/">首頁</a></li>

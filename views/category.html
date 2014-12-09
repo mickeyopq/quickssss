@@ -14,18 +14,19 @@
 			<input id="name" type="text" class="form-control" name="name" placeholder="Enter category name">
 			<input type="hidden" name="op" value="add">
 		</div>
-		<button type="submit" class="btn btn-default" onclick="return checkInput();">添加分類</button>
+		<button type="submit" class="btn btn-success" onclick="return checkInput();">添加分類</button>
 
 	</form>
+  {{template "js"}}
   	<script type="text/javascript">
       	function checkInput() {
       		var uname = document.getElementById("name");
       		if (uname.value.length == 0) {
-      			alert("請輸入分類名稱");
+      			alert("請輸入");
       			return false;
       		}
       	}
-  	</script>{{template "js"}}
+  	</script>
   	<table class="table table-striped">
   		<thead>
   			<tr>

@@ -5,5 +5,5 @@
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="/static/img/555.jpg">
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-
+	<link rel="stylesheet" href="/static/css/Pike.css">
  {{end}}

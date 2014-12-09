@@ -11,8 +11,8 @@ type LoginController struct {
 
 func (self *LoginController) Get() {
 	// 判斷是否為登錄狀態,;如果user按了登出....
-	isExit := self.Input().Get("exit") == "true"
-	if isExit {
+	isExit := self.Input().Get("exit") // == "true"
+	if isExit == "true" {
 		self.Ctx.SetCookie("uname", "", -1, "/")
 		self.Ctx.SetCookie("pwd", "", -1, "/")
 		self.Redirect("/", 301)
