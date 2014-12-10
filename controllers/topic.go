@@ -114,7 +114,7 @@ func (自己 *TopicController) Add() {
 			beego.Error(err)
 		}
 	} else {
-		自己.Ctx.WriteString("不可以這樣地新增.....")
+		自己.Redirect("/topic", 302)
 		return
 	}
 }
