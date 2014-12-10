@@ -13,15 +13,19 @@
 
 
 <div class="container">
+	 <div id="ChkLogin" style="display:none">{{.IsLogin}}</div>
 {{with .Topic}}	
-  <h1>{{.Title}} <small>.Category  <a href="/topic/modify?tid={{$tid}}">修改文章</a> </small></h1>
+  <h1>{{.Title}} <small>.Category  
+  <a class="authDo" style="display:none" href="/topic/modify?tid={{$tid}}">修改文章</a>
+   </small></h1>
   {{.Content}}
 {{end}}
 </div>
 
 <div class="container">
 	{{range .Replies}}
-		<h3>{{.Name}} <small>{{.Created}} <a href="/reply/del?tid={{$tid}}&rid={{.Id}} ">刪除</a> </small> </h3>
+		<h3>{{.Name}} <small>{{.Created}} 
+				<a class="authDo" style="display:none" href="/reply/del?tid={{$tid}}&rid={{.Id}} ">刪除</a> </small> </h3>
 		{{.Content}}
 	{{end}}
 	<h3>本文回覆</h3>
@@ -38,7 +42,16 @@
 		<button type="submit" class="btn btn-danger">提交回覆</button>
 	</form>
 </div>
+<script type="text/javascript">
+onload=showDel();
+//沒登錄就不顯示
+function showDel () {
+	var GetValue = $('#ChkLogin').text();
+	if (GetValue=="true") {
+	$('.authDo').css('display','inline');
+	};
+}
+</script>
 
-  {{template "js"}}
 </body>
 </html>

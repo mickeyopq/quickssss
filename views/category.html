@@ -11,13 +11,12 @@
 	<h1>分類列表</h1>
 	<form method="GET" action="/category">
 		<div class="form-group">
-			<input id="name" type="text" class="form-control" name="name" placeholder="Enter category name">
+			<input id="name" type="text" class="form-control" name="name" placeholder="Enter category name" required>
 			<input type="hidden" name="op" value="add">
 		</div>
-		<button type="submit" class="btn btn-success" onclick="return checkInput();">添加分類</button>
+		<button onclick="authAdd()" type="submit" class="btn btn-success" onclick="return checkInput();">添加分類</button>
 
 	</form>
-  {{template "js"}}
   	<script type="text/javascript">
       	function checkInput() {
       		var uname = document.getElementById("name");
@@ -27,6 +26,7 @@
       		}
       	}
   	</script>
+       <div id="ChkLogin" style="display:none">{{.IsLogin}}</div>
   	<table class="table table-striped">
   		<thead>
   			<tr>
@@ -43,12 +43,33 @@
 			<td>{{.Title}}</td>
       <td>數量</td>
 			<td>
-				<a href="/category?op=del&id={{.Id}}">刪除</a>
+				<a class="authDo" style="display:none" href="/category?op=del&id={{.Id}}">刪除</a>
 			</td>
       </tr>
         {{end}}
   		</tbody>
   	</table>
 </div>
+
+<script type="text/javascript">
+onload=showDel();
+//沒登錄就不顯示
+function showDel () {
+  var GetValue = $('#ChkLogin').text();
+  if (GetValue=="true") {
+  $('.authDo').css('display','inline');
+  };
+}
+
+//add時沒登錄就alert
+function authAdd () {
+  var GetValue = $('#ChkLogin').text();
+  if (GetValue!="true") {
+    alert("請登錄");
+  };
+
+}
+</script>
+
 </body>
 </html>

@@ -1,17 +1,24 @@
 {{template "header"}}
+{{template "js"}}
 <link rel="stylesheet" href="/static/css/signin.css">
 	<title>登錄頁-my博客</title>
 	</head>
 <body>
 <div class="container" style="width: 300px">
-	<form method="POST" action="/login" class="form-signin">
+
+	<div id="ChkAccount" style="display:none">{{.LgErr}}</div>
+	<div id="showred" class="alert alert-danger" style="display:none">
+		<span class="label label-danger">Warning</span>
+		登錄認証錯誤
+	</div>
+	<form method="POST" action="#" class="form-signin">
 	  <div class="form-group">
 	    <label >Account</label>
-	    <input id="uname" class="form-control" placeholder="Account" name="uname">
+	    <input id="uname" class="form-control" placeholder="Account" name="uname" required>
 	  </div>
 	  <div class="form-group">
 	    <label >Password</label>
-	    <input id="pwd" type="password" class="form-control" placeholder="Password" name="pwd">
+	    <input id="pwd" type="password" class="form-control" placeholder="Password" name="pwd" required>
 	  </div>
 	  <div class="checkbox">
 	    <label>
@@ -19,37 +26,27 @@
 	    </label>
 	  </div>
 
-	  <button type="submit" class="btn btn-lg btn-info" onclick="return CheckInput()">登錄</button>
+	  <button type="submit" class="btn btn-lg btn-info">登錄</button>
 	  <button type="submit" class="btn btn-lg btn-default" onclick="return BackToHome()">返回</button>
 	</form>
-<!-- </div>
-<div class="container">
- -->
- <div class="alert alert-danger" role="alert">
+
+ <div class="alert alert-success" role="alert">
 	<h3> 提示:admin/admin </h3>
 </div>
 </div>
-{{template "js"}}
 <script type="text/javascript">
-
 function BackToHome () {
 	window.location.href="/";
 	return false;
 }
+onload=vvv();
+//登錄錯誤就顯示紅框
+function vvv () {
+	var GetValue = $('#ChkAccount').text();
+	if (GetValue=="true") {
+	$('#showred').css('display','block');
+	};
+}
 </script>
-  	<script type="text/javascript">
-      	function CheckInput() {
-      		var uname = document.getElementById("uname");
-      		if (uname.value.length == 0) {
-      			alert("請輸入");
-      			return false;}
-      		var pwd = document.getElementById("pwd");
-      		if (pwd.value.length == 0) {
-      			alert("請輸入");
-      			return false;}
-
-      	}
-  	</script>
-
 </body>
 </html>

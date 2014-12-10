@@ -66,7 +66,8 @@ func (自己 *TopicController) View() {
 		return
 	}
 	自己.Data["Replies"] = replies
-	自己.Data["IsLogin"] = 檢查帳號(自己.Ctx)
+	// 自己.Data["IsLogin"] = 檢查帳號(自己.Ctx)
+	// 自己.Data["IsLogin"] = 檢查帳號(自己.Ctx)
 	// 自己.Data["tid"] = tid
 	// 自己.Data["Category"] = "Category還沒定義"
 }
@@ -83,6 +84,10 @@ func (自己 *TopicController) Del() {
 }
 
 func (自己 *TopicController) Modify() {
+	if !檢查帳號(自己.Ctx) {
+		自己.Ctx.WriteString("不可以這樣")
+		return
+	}
 	自己.TplNames = "topic_modify.html"
 	tid := 自己.Input().Get("tid")
 	topic, err := models.GetTopic(tid)

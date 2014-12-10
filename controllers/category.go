@@ -15,15 +15,17 @@ func (自己 *CategoryController) Get() {
 	op := 自己.Input().Get("op")
 	switch op {
 	case "add":
-		name := 自己.Input().Get("name")
-		// ===DEBUG==============================
-		if len(name) == 0 {
-			break
-		}
-		err := models.AddCategory(name)
-		if err != nil {
-			beego.Error("===DEBUG==============================")
-			beego.Error(err) //錯了就寫日記
+		if 檢查帳號(自己.Ctx) {
+			name := 自己.Input().Get("name")
+			// ===DEBUG==============================
+			if len(name) == 0 {
+				break
+			}
+			err := models.AddCategory(name)
+			if err != nil {
+				beego.Error("===DEBUG==============================")
+				beego.Error(err) //錯了就寫日記
+			}
 		}
 		自己.Redirect("/category", 302)
 		return
