@@ -2,7 +2,6 @@ package models
 
 import (
 	"github.com/Unknwon/com"
-	// "github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/mattn/go-sqlite3"
 	"os"
@@ -66,13 +65,6 @@ func RegisterDB() {
 	orm.RegisterDataBase("default", _SQLITE3_DRIVER, _DB_NAME, 10)
 }
 
-// AddMod_ppp insert a new Mod_ppp into database and returns
-// last inserted Id on success.
-// func AddMod_ppp(m *Mod_ppp) (id int64, err error) {
-// 	o := orm.NewOrm()
-// 	id, err = o.Insert(m)
-// 	return
-// }
 func DelCategory(id int64) error {
 	o := orm.NewOrm()
 	o.Using("default")
@@ -99,7 +91,7 @@ func GetAllCategories() ([]*Category, error) {
 
 func GetAllTopics(cate string, isDesc bool) (topics []*Topic, err error) {
 	o := orm.NewOrm()
-	topics = make([]*Topic, 0) //幹，這裡為什麼不能宣告？？？
+	topics = make([]*Topic, 0) //不能宣告，用make
 	qs := o.QueryTable("topic")
 	if isDesc {
 		if len(cate) > 0 {

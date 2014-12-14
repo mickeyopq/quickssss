@@ -19,7 +19,6 @@ func (自己 *LoginController) Get() {
 		return
 	}
 	自己.TplNames = "login.html"
-	// c.Data["Condition11"] = false
 }
 func (自己 *LoginController) Post() {
 	//登錄時驗証

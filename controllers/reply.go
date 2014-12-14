@@ -17,7 +17,7 @@ func (自己 *ReplyController) Add() {
 		beego.Error(err)
 	}
 
-	自己.Redirect("/topic/view/"+tid, 302)
+	自己.Redirect("/topic/view/"+tid, 301)
 }
 
 func (自己 *ReplyController) Del() {
@@ -30,5 +30,5 @@ func (自己 *ReplyController) Del() {
 		beego.Error(err)
 	}
 
-	自己.Redirect("/topic/view/"+tid, 302)
+	自己.Redirect("/topic/view/"+tid, 301)
 }

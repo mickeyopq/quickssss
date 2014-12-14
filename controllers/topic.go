@@ -25,7 +25,7 @@ func (自己 *TopicController) Get() {
 func (自己 *TopicController) Post() {
 	// 自己.Ctx.WriteString("幹")
 	if !檢查帳號(自己.Ctx) {
-		自己.Redirect("/login", 302)
+		自己.Redirect("/login", 301)
 		return
 	}
 	//接收文章表單
@@ -34,12 +34,10 @@ func (自己 *TopicController) Post() {
 	title := 自己.Input().Get("title")
 	category := 自己.Input().Get("category")
 	content := 自己.Input().Get("content")
-	// category := 自己.Input().Get("category")
 
 	var err error
 	if len(tid) == 0 {
 		err = models.AddTopic(title, content, category)
-		// err = models.AddTopic(title, category, content)
 	} else {
 		err = models.ModifyTopic(tid, title, content, category)
 	}
@@ -66,10 +64,6 @@ func (自己 *TopicController) View() {
 		return
 	}
 	自己.Data["Replies"] = replies
-	// 自己.Data["IsLogin"] = 檢查帳號(自己.Ctx)
-	// 自己.Data["IsLogin"] = 檢查帳號(自己.Ctx)
-	// 自己.Data["tid"] = tid
-	// 自己.Data["Category"] = "Category還沒定義"
 }
 func (自己 *TopicController) Del() {
 	if !檢查帳號(自己.Ctx) {
@@ -80,7 +74,7 @@ func (自己 *TopicController) Del() {
 	if err != nil {
 		beego.Error(err)
 	}
-	自己.Redirect("/topic", 302)
+	自己.Redirect("/topic", 301)
 }
 
 func (自己 *TopicController) Modify() {
@@ -93,7 +87,7 @@ func (自己 *TopicController) Modify() {
 	topic, err := models.GetTopic(tid)
 	if err != nil {
 		beego.Error(err)
-		自己.Redirect("/", 302)
+		自己.Redirect("/", 301)
 		return
 	}
 	自己.Data["Topic"] = topic

@@ -12,18 +12,16 @@ type CategoryController struct {
 }
 
 func (自己 *CategoryController) Get() {
-	op := 自己.Input().Get("op")
+	op := 自己.Input().Get("op") //選擇動作是add or del
 	switch op {
 	case "add":
 		if 檢查帳號(自己.Ctx) {
 			name := 自己.Input().Get("name")
-			// ===DEBUG==============================
 			if len(name) == 0 {
 				break
 			}
 			err := models.AddCategory(name)
 			if err != nil {
-				beego.Error("===DEBUG==============================")
 				beego.Error(err) //錯了就寫日記
 			}
 		}
@@ -36,11 +34,10 @@ func (自己 *CategoryController) Get() {
 			cid := int64(id)
 			err := models.DelCategory(cid)
 			if err != nil {
-				beego.Error("===DEBUG==============================")
 				beego.Error(err) //錯了就寫日記
 			}
 		} else {
-			自己.Ctx.WriteString("不可以這樣")
+			自己.Ctx.WriteString("不可以這樣") //直接打印字串
 			return
 		}
 	}
