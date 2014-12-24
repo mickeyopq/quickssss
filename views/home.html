@@ -1,39 +1,19 @@
-{{template "header"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{template "sCssHeader" .}}
 	<title>home目錄-my博客</title>
-	</head>
+</head>
+
 <body>
-<div class="navbar navbar-default">
-	<div class="container">
-	{{template "navbar" .}}
-	</div>
-</div>
-<div class="container" role="main">
-      <div class="jumbotron hellwall">
-        <h1>Hi 你好</h1>
-        <p>歡迎來到我的博客</p>
-        <p>I'm Pike <br> mickeyopq@gmail.com
-        </p>
-        <p><a href="mailto:mickeyopq@gmail.com" class="btn btn-default btn-lg" role="button">Contact Me &raquo;</a></p>
-      </div>
-</div>
+{{template "navbar" .}}
+<!-- Page Content -->
 <div class="container">
-	<div class="col-md-9">
-	{{range .Topics}}
-		<h1><a href="/topic/view/{{.Id}}">{{.Title}} </a></h1>
-		<h4 class="text-muted">文章發表於{{.Created}} ,共{{.Views}} 次看過，{{.ReplyCount}} 次評論</h4>
-		<p>
-			{{.Content}}
-		</p>
-	{{end}}
-	</div>
-<div class="col-md-3">
-	<h3>文章分類</h3>
-	<ul>
-		{{range .Categories}}
-			<li><a href="/?cate={{.Title}}">{{.Title}} </a></li>
-		{{end}}
-	</ul>
+    <div class="row">
+    {{template "contentsHome" .}}
+    {{template "contentsSidebar" .}}
+    </div>
 </div>
-</div>
+
 </body>
 </html>

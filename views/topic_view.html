@@ -3,12 +3,8 @@
 	</head>
 
 <body>
-  <div class="navbar navbar-default">
-  	<div class="container">
-    	{{template "navbar" .}}
-  	</div>
-  </div>
-	{{$tid:= .Topic.Id}}
+{{template "navbar" .}}
+ {{$tid:= .Topic.Id}}
 	{{$isLogin:= .Islogin}}
 
 

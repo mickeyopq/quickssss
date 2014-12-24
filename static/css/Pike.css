@@ -1,6 +1,68 @@
+body {
+  padding-top: 70px;
+  /*padding-bottom: 30px;*/
+  /*background: url(../img/暗黑格鬥.jpg);*/
+  background-size: cover;
+  font-size: 16px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
 .hellwall {
   padding: 10px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #CBB0DB;
+  background-color: #C9C9C9;
+}
+footer {
+  position: relative;
+ height: 76px;
+ margin-top: -76px;
+ clear:both;
+    background-color: #281F1A;
+}
+.footSty{
+    padding: 25px 0;
+    background-color: #281F1A;
+    color: white;
+    bottom: 0;
+  margin-bottom: 0;
+/*    margin-bottom: 0;
+    padding-bottom: 0;
+*/
+}
+/*圖片*/
+.welcome{
+    background: url(../img/背景_交響00.jpg);
+  /*background: url(http://placehold.it/1920x1080) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.text-vertical-center {
+    padding-top: 300px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    bottom: 0;
+    /*height: auto;*/
+}
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
 }

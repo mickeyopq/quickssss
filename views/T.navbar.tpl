@@ -1,5 +1,8 @@
 {{define "navbar"}}
-		<a href="/" class="navbar-brand">My blog</a>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+
+		<a href="/welcome" class="navbar-brand">My blog</a>
 	<div>
 		<ul class="nav navbar-nav">
 			<li {{if .IsHome}}class="active"{{end}}><a href="/">首頁</a></li>
@@ -17,6 +20,9 @@
 		{{end}}
 	</ul>
 </div>
+</div>
+</nav>
+
 	<!-- 新增一個jquery-cookie套件 -->
 	{{template "js"}}
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
